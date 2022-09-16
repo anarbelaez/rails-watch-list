@@ -1,7 +1,19 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require 'faker'
+
+movies = {
+  'My Neighbour Totoro' => 'https://picfiles.alphacoders.com/355/thumb-355178.jpg',
+  'Ponyo' => 'https://picfiles.alphacoders.com/349/thumb-349135.jpg',
+  'Spirited Away' => 'https://picfiles.alphacoders.com/350/thumb-350207.jpg',
+  'Nausicaä of the Valley of the Wind' => 'https://picfiles.alphacoders.com/356/thumb-356316.jpg',
+  'Castle in the Sky' => 'https://picfiles.alphacoders.com/800/thumb-80073.jpg'
+}
+
+movies.each do |key, value|
+  movie = Movie.create(
+    title: key,
+    overview: Faker::JapaneseMedia::StudioGhibli.quote,
+    poster_url: value,
+    rating: rand(8.0..10.0).floor(1)
+  )
+  movie.save!
+end

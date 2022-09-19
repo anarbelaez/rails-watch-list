@@ -5,6 +5,7 @@
 <br>
 <% @list.bookmarks.each do |bookmark| %>
   <%= bookmark.comment %>
+  <img src="<%= bookmark.movie.poster_url %>" alt="" width="200">
   <%= link_to "Delete bookmark", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
   <br>
 <% end %>

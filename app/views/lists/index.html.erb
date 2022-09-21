@@ -1,6 +1,17 @@
-<h1>Lists#index</h1>
-<p>Find me in app/views/lists/index.html.erb</p>
+<%= render "carousel" %>
+<div class="row g-3 my-3 justify-content-around">
+  <h2 class="">My lists</h2>
+  <% @lists.each do |list| %>
+    <%= render "shared/card", object: list, locals: { width: "260px", height: "150px", column: "name"} %>
+  <% end %>
 
-<% @lists.each do |list| %>
-  <%= link_to "#{list.name}", list_path(list) %>
-<% end %>
+  <h2 class="">Recently added</h2>
+  <% @lists.first(5).each do |list| %>
+    <%= render "shared/card", object: list, locals: { width: "200px", height: "290px", column: "name" } %>
+  <% end %>
+
+  <h2 class="">Best Studio Ghibli Movies to Watch</h2>
+  <% @movie.each do |movie| %>
+    <%= render "shared/card", object: movie, locals: { width: "200px", height: "290px", column: "title" } %>
+  <% end %>
+</div>

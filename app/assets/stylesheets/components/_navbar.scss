@@ -1,12 +1,5 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
-}
+.navbar-brand {
+  font-family: $brand;
+  font-size: 2 * $font-size-base;
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
 }

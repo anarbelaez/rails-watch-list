@@ -1,17 +1,39 @@
-<%= render "carousel" %>
-<div class="row g-3 my-3 justify-content-around">
+<%# Lists %>
+<div class="row my-5">
   <h2 class="">My lists</h2>
-  <% @lists.each do |list| %>
-    <%= render "shared/card", object: list, locals: { width: "260px", height: "150px", column: "name"} %>
-  <% end %>
-
-  <h2 class="">Recently added</h2>
-  <% @lists.first(5).each do |list| %>
-    <%= render "shared/card", object: list, locals: { width: "200px", height: "290px", column: "name" } %>
-  <% end %>
-
-  <h2 class="">Best Studio Ghibli Movies to Watch</h2>
-  <% @movie.each do |movie| %>
-    <%= render "shared/card", object: movie, locals: { width: "200px", height: "290px", column: "title" } %>
+  <% @lists.first(4).each do |list| %>
+  <div class="col-6 col-md-2">
+    <%= render "shared/card", object: list.name, locals: { width: "260px", height: "150px" } %>
+  </div>
   <% end %>
 </div>
+<%# End Lists %>
+
+<%# Last bookmarks %>
+<div class="row gx-3">
+  <h2 class="">Recently added</h2>
+    <% @lists.first(6).each do |list| %>
+    <div class="col-6 col-md-2">
+      <%= render "shared/card", object: list.name, locals: { width: "200px", height: "270px"  } %>
+    </div>
+    <% end %>
+</div>
+<%# End Last Bookmarks %>
+
+<%# Movies %>
+<div class="row my-5 align-items-end">
+  <div class="col-4">
+    <h2 class="">Best Studio Ghibli Movies to Watch</h2>
+    <p> Whether it's a whimsical adventure, heart-racing drama, or innocent romance, this animation powerhouse has something for everyone.</p>
+  </div>
+  <div class="col-8">
+    <div class="row">
+      <% @movies.first(4).each do |movie| %>
+        <div class="col-6 col-md-3">
+          <%= render "shared/card", object: movie.title, locals: { width: "200px", height: "270px" } %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%# End Movies %>

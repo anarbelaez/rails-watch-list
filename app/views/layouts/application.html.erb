@@ -13,12 +13,10 @@
 
   <body>
 
-  <div class="d-block">
   <%= render "shared/navbar" %>
-  <% if current_page?(lists_path) %>
+  <% if current_page?(home_path) %>
     <%= render "carousel" %>
   <% end %>
-  </div>
   <div class="container">
     <%= yield %>
   </div>

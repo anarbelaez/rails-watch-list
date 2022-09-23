@@ -1,9 +1,30 @@
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  width: 30px;
+  position: absolute;
+}
+
+.carousel-control-prev-icon {
+  left: 10px;
+}
+
+.carousel-control-next-icon {
+  right: 10px;
+}
+
+.carousel-control-prev, .carousel-control-next {
+  width: 50px;
+}
+
+// .carousel {
+//   margin-top: -60px;
+// }
+
+
 // .carousel {
 //   position:absolute;
 //   width:100%;
 //   top:0;
 // }
-
 
 // .carousel-inner {
 //   width: 100%;

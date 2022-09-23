@@ -1,0 +1,26 @@
+<div id="carouselCards" class="carousel slide" data-controller="carousel-cards" data-bs-interval="false" data-ride="carousel" data-pause="hover">
+  <div class="carousel-inner py-2">
+
+    <% bookmarks.each_slice(6) do |sublist| %>
+      <div class="carousel-card carousel-item" data-carousel-cards-target="item">
+          <div class="row gx-3">
+            <% sublist.each do |bookmark| %>
+              <div class="col-6 col-md-2">
+                <%= render "shared/card", object: bookmark, locals: { height: "270px"  } %>
+              </div>
+            <% end %>
+          </div>
+      </div>
+    <% end %>
+
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselCards" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon " aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselCards" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

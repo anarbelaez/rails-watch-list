@@ -1,7 +1,7 @@
-<%# Lists %>
-<div class="row my-5">
+-<%# Lists %>
+<div class="row my-5 gx-3">
   <h2 class="">My lists</h2>
-  <% @lists.first(4).each do |list| %>
+  <% @lists.first(5).each do |list| %>
   <div class="col-6 col-md-2">
     <%= render "shared/card", object: list.name, locals: { width: "260px", height: "150px" } %>
   </div>
@@ -20,14 +20,48 @@
 </div>
 <%# End Last Bookmarks %>
 
+
+<%# CAROUSEL %>
+<div class="row">
+
+<div class="col-12">
+<div id="carouselCards" class="carousel slide" data-bs-interval="false" data-ride="carousel" data-pause="hover">
+  <div class="carousel-inner p-2">
+    <% @lists.each_slice(6) do |sublist| %>
+    <div class="carousel-card carousel-item">
+      <div class="row gx-3">
+      <% sublist.each do |list| %>
+      <div class="col-6 col-md-2">
+        <%= render "shared/card", object: list.name, locals: { width: "200px", height: "270px"  } %>
+      </div>
+      <% end %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselCards" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon " aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselCards" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
+</div>
+<%# END CAROUSEL %>
+
 <%# Movies %>
-<div class="row my-5 align-items-end">
-  <div class="col-4">
+<div class="row my-5">
+  <div class="col-4 pt-5">
     <h2 class="">Best Studio Ghibli Movies to Watch</h2>
     <p> Whether it's a whimsical adventure, heart-racing drama, or innocent romance, this animation powerhouse has something for everyone.</p>
+    <button type="button" class="btn btn-light">Explore</button>
   </div>
   <div class="col-8">
-    <div class="row">
+    <div class="row gx-3">
       <% @movies.first(4).each do |movie| %>
         <div class="col-6 col-md-3">
           <%= render "shared/card", object: movie.title, locals: { width: "200px", height: "270px" } %>
@@ -37,3 +71,12 @@
   </div>
 </div>
 <%# End Movies %>
+
+<script>
+
+const carouselItems = document.getElementsByClassName("carousel-card");
+carouselItems[0].classList.add("active");
+
+
+
+</script>

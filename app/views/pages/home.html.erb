@@ -1,0 +1,42 @@
+<%# Lists %>
+<div class="row my-5 gx-3">
+  <p class="fs-5 my-2">My lists</p>
+
+  <% @lists.each do |list| %>
+    <div class="col-6 col-md-2">
+      <%= render "shared/card", object: list, locals: { height: "150px" } %>
+    </div>
+  <% end %>
+</div>
+<%# End Lists %>
+
+<%# Carousel Cards %>
+<div class="row">
+  <div class="col-12">
+    <%= render "carousel_cards", bookmarks: @bookmarks %>
+  </div>
+</div>
+<%# End Carousel Cards %>
+
+<%# Movies %>
+<div class="row my-5">
+
+  <div class="col-4 pt-5">
+    <h2 class="">Best Studio Ghibli Movies to Watch</h2>
+    <p> Whether it's a whimsical adventure, heart-racing drama, or innocent romance, this animation powerhouse has something for everyone.</p>
+    <button type="button" class="btn btn-light">Explore</button>
+  </div>
+
+  <div class="col-8">
+    <div class="row gx-3">
+
+      <% @movies.each do |movie| %>
+        <div class="col-6 col-md-3">
+          <%= render "shared/card", object: movie, locals: { height: "270px" } %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+<%# End Movies %>

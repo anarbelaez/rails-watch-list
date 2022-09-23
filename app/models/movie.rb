@@ -3,4 +3,12 @@ class Movie < ApplicationRecord
 
   validates :title, :overview, presence: true
   validates :title, uniqueness: true
+
+  def nombre
+    title
+  end
+
+  def image
+    poster_url
+  end
 end

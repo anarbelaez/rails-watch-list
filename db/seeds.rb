@@ -18,7 +18,7 @@ require 'faker'
 #   movie.save!
 # end
 
-lists = %w[Classics Comedy Drama Action Suspense Sci-fi]
+lists = %w[Japanese Chinese Historical]
 
 lists.each do |list|
   List.create(

@@ -1,0 +1,18 @@
+.ghost-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: indigo;
+  color: white;
+  font-size: $font-size-base;
+  text-align: center;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.ghost-card:hover {
+  border: 2px solid rgb(0, 0, 0);
+  background: linear-gradient(312deg, rgba(33,4,68,1) 0%, rgba(16,11,24,1) 100%);
+  outline: 2px solid rgb(123, 16, 255);
+  cursor: pointer;
+}

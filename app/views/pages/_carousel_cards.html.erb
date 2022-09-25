@@ -1,21 +1,29 @@
 <div id="carouselCards" class="carousel slide" data-controller="carousel-cards" data-bs-interval="false" data-ride="carousel" data-pause="hover">
   <div class="carousel-inner p-1">
 
-    <% i = 0 %>
-    <% bookmarks.each_slice(6) do |sublist| %>
+    <% i = 0 %> <%#= Contador de objetos puestos en el slide %>
+
+    <%#= Iteramos sobre listas de maximo 6 elementos %>
+    <% objects.each_slice(6) do |sublist| %>
+    <%# Se crea un item del carousel con estos elementos %>
       <div class="carousel-card carousel-item" data-carousel-cards-target="item">
           <div class="row gx-3">
-            <% sublist.each do |bookmark| %>
+
+          <%# Presentamos el objeto en forma de card %>
+            <% sublist.each do |object| %>
               <div class="col-6 col-md-2">
-                <%= render "shared/card", object: bookmark, locals: { height: "270px", local: true  } %>
+                <%= render "shared/card", object: object, locals: { height: "270px", local: true  } %>
+
+                <%# Se cuenta cada vez que se agrega una card %>
                 <% i += 1 %>
               </div>
-                <% if i == bookmarks.size %>
-                <div class="col-6 col-md-2">
-                  <%= render "shared/ghost_card", locals: { height: "270px" }%>
-                  </div>
-                <% end %>
 
+              <%# Si llegamos al final de todos los objetos entonces mostramos una ghost card "Ver mas" %>
+              <% if i == objects.size %>
+              <div class="col-6 col-md-2">
+                <%= render "shared/ghost_card", locals: { height: "270px" }%>
+                </div>
+              <% end %>
 
             <% end %>
           </div>
@@ -24,12 +32,15 @@
 
   </div>
 
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselCards" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon " aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselCards" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+  <%# Si se muestran mas de 6 elementos entonces los controles del carousel son visibles %>
+  <% unless objects.size <= 6 %>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselCards" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon " aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselCards" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  <% end %>
 </div>

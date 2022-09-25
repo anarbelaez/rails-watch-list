@@ -1,6 +1,7 @@
 <div id="carouselCards" class="carousel slide" data-controller="carousel-cards" data-bs-interval="false" data-ride="carousel" data-pause="hover">
   <div class="carousel-inner p-1">
 
+    <% i = 0 %>
     <%#= Iteramos sobre listas de maximo 6 elementos %>
     <% objects.last(11).each_slice(6) do |sublist| %>
     <%# Se crea un item del carousel con estos elementos %>
@@ -11,10 +12,11 @@
             <% sublist.each do |object| %>
               <div class="col-6 col-md-2">
                 <%= render "shared/card", object: object, locals: { height: "270px", local: true  } %>
+                <% i += 1 %>
               </div>
 
               <%# Si existen mas de 11 objetos entonces mostramos una ghost card "Ver mas" %>
-              <% if objects.size > 11 %>
+              <% if i == 11 %>
               <div class="col-6 col-md-2">
                 <%= render "shared/ghost_card", locals: { height: "270px" }%>
               </div>

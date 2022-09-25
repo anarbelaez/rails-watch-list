@@ -1,20 +1,38 @@
 <%# Banner - User's name %>
-<div class="row my-5">
-  <div class="col-12">
+<div class="row mb-5">
+  <div class="col-12 text-center">
     <%= render "shared/avatar" %>
-    <p class="m-0 mt-2 text-center">Korita</p>
+    <p class="m-0 mt-3 mb-4">Korita</p>
+    <button class="btn btn-light">New list</button>
   </div>
 </div>
 <%# Banner - End user's name %>
 
+<%# Actions - Search and add list %>
+<div class="row mb-4">
+  <div class="col-12">
+    <p class="fs-5 m-0 pb-2 border-bottom mb-3">My lists</p>
+
+    <div class="d-flex justify-content-end">
+      <%# Form %>
+    <form action="/score" method="post" data-turbo="false" class="form-row">
+      <div class="d-flex justify-content-center">
+        <input type="text" name="word" placeholder="" autocomplete="off" class="shadow-none bg-dark form-control border-0 rounded-0">
+        <button type="submit" class="btn btn-dark shadow-none border-0 rounded-0"><i class="bi bi-search"></i></button>
+      </div>
+<%# End Form %>
+    </div>
+  </div>
+</div>
+<%# End - Actions - Search and add list %>
+
 <%# Lists %>
-<div class="row px-1 gx-3">
-  <p class="fs-5 mb-2">My lists</p>
-  <hr>
+<div class="row mb-5 px-1 gx-3">
 
   <% @lists.each do |list| %>
     <div class="col-2 col-md-2">
       <%= render "shared/card", object: list, locals: { height: "180px", local: false } %>
+      <p class="m-0 mt-1"><%= list.nombre %></p>
     </div>
   <% end %>
 

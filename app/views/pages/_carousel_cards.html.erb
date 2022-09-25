@@ -20,7 +20,7 @@
 
               <%# Si llegamos al final de todos los objetos entonces mostramos una ghost card "Ver mas" %>
               <% if objects.size > 11 %>
-              <div class="col-2 col-md-2">
+              <div class="col-6 col-md-2">
                 <%= render "shared/ghost_card", locals: { height: "270px" }%>
               </div>
               <% end %>

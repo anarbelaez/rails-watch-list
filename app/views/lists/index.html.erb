@@ -13,7 +13,7 @@
   <hr>
 
   <% @lists.each do |list| %>
-    <div class="col-3 col-md-2">
+    <div class="col-2 col-md-2">
       <%= render "shared/card", object: list, locals: { height: "180px", local: false } %>
     </div>
   <% end %>

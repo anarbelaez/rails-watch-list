@@ -1,13 +1,22 @@
 <div id="carouselCards" class="carousel slide" data-controller="carousel-cards" data-bs-interval="false" data-ride="carousel" data-pause="hover">
   <div class="carousel-inner p-1">
 
+    <% i = 0 %>
     <% bookmarks.each_slice(6) do |sublist| %>
       <div class="carousel-card carousel-item" data-carousel-cards-target="item">
           <div class="row gx-3">
             <% sublist.each do |bookmark| %>
               <div class="col-6 col-md-2">
                 <%= render "shared/card", object: bookmark, locals: { height: "270px", local: true  } %>
+                <% i += 1 %>
               </div>
+                <% if i == bookmarks.size %>
+                <div class="col-6 col-md-2">
+                  <%= render "shared/ghost_card", locals: { height: "270px" }%>
+                  </div>
+                <% end %>
+
+
             <% end %>
           </div>
       </div>

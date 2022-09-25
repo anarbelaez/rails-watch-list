@@ -1,20 +1,19 @@
 <%# Banner - User's name %>
-<div class="row mt-4">
+<div class="row my-5">
   <div class="col-12">
     <%= render "shared/avatar" %>
-    <p class="mt-2 text-center">Korita</p>
+    <p class="m-0 mt-2 text-center">Korita</p>
   </div>
 </div>
 <%# Banner - End user's name %>
 
-
 <%# Lists %>
-<div class="row my-5 px-1 gx-3">
+<div class="row px-1 gx-3">
   <p class="fs-5 mb-2">My lists</p>
   <hr>
 
   <% @lists.each do |list| %>
-    <div class="col-6 col-md-2">
+    <div class="col-3 col-md-2">
       <%= render "shared/card", object: list, locals: { height: "180px", local: false } %>
     </div>
   <% end %>

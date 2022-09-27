@@ -1,11 +1,22 @@
-<h1>Lists#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
-
 <%= link_to "Add new bookmark", new_list_bookmark_path(@list), class: "btn btn-info"  %>
 <br>
-<% @list.bookmarks.each do |bookmark| %>
-  <%= bookmark.comment %>
-  <img src="<%= bookmark.movie.poster_url %>" alt="" width="200">
-  <%= link_to "Delete bookmark", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-  <br>
-<% end %>
+
+<div data-controller="insert-in-list">
+  <div data-insert-in-list-target="items">
+    <% if @list.bookmarks.blank? %>
+      Be the first to leave a review for <%= @list.nombre %>
+    <% else %>
+    <div class="row">
+      <% @list.bookmarks.each do |bookmark| %>
+        <div class="col-md-2">
+          <%= render "bookmarks/bookmark", bookmark: bookmark %>
+        </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+
+  <%= render "bookmarks/form", list: @list, bookmark: @bookmark %>
+</div>
+
+<%= link_to "Back to lists", lists_path %>

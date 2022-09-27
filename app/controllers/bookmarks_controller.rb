@@ -5,14 +5,29 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.new
   end
 
+  # def create
+  #   @bookmark = Bookmark.new(bookmark_params)
+  #   @bookmark.list = @list
+  #   @bookmark.save
+  #   if @bookmark.save
+  #     redirect_to list_path(@list)
+  #   else
+  #     render :new, status: :unprocessable_entity
+  #   end
+  # end
+
   def create
     @bookmark = Bookmark.new(bookmark_params)
     @bookmark.list = @list
-    @bookmark.save
-    if @bookmark.save
-      redirect_to list_path(@list)
-    else
-      render :new, status: :unprocessable_entity
+
+    respond_to do |format|
+      if @bookmark.save
+        format.html { redirect_to list_path(@list) }
+        format.json # Follow the classic Rails flow and look for a create.json view
+      else
+        format.html { render "lists/show", status: :unprocessable_entity }
+        format.json # Follow the classic Rails flow and look for a create.json view
+      end
     end
   end
 

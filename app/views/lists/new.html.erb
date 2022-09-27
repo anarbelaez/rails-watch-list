@@ -1,8 +1,11 @@
-<h1>Lists#new</h1>
-<p>Find me in app/views/lists/new.html.erb</p>
-
-<%= simple_form_for(@list) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit %>
-<% end %>
+<div class="row">
+  <div class="col-6 mx-auto">
+    <%= simple_form_for(@list) do |f| %>
+      <%= f.input :name %>
+      <%= f.input :photo, as: :file,
+                  input_html: {class: "d-none"},
+                  label: "Add a photo", label_html: {class: "bg-info"} %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>

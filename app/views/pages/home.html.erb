@@ -1,10 +1,14 @@
 <%# Lists %>
 <div class="row my-5 px-1 gx-3">
-  <p class="fs-5 my-2">My lists</p>
+  <span class="my-2">
+    <span class="fs-5 fw-bold">My lists </span>
+    <i class="fs-6 bi bi-chevron-right"></i>
+  </span>
 
   <% @lists.last(5).each do |list| %>
     <div class="col-6 col-md-2">
       <%= render "shared/card", object: list, locals: { height: "180px", local: false } %>
+      <p class="m-0 mt-1 fw-bold"><%= list.nombre %></p>
     </div>
   <% end %>
 
@@ -18,8 +22,12 @@
 
 <%# Carousel Cards %>
 <div class="row">
+  <span class="my-2">
+    <span class="fs-5 fw-bold">Bookmarks recently added</span>
+    <i class="fs-6 bi bi-chevron-right"></i>
+  </span>
   <div class="col-12">
-    <%= render "carousel_cards", objects: @movies %>
+  <%= render "carousel_cards", objects: @movies %>
   </div>
 </div>
 <%# End Carousel Cards %>
